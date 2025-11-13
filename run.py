@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Toonify FastAPI Application Runner
+Reframe FastAPI Application Runner
 """
 import uvicorn
 import os
@@ -10,7 +10,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     host = os.environ.get("HOST", "0.0.0.0")
     
-    print("🎨 Starting Toonify - AI Image Transformation Tool")
+    print("🎨 Starting Reframe - AI Image Transformation Tool")
     print(f"🌐 Server will be available at: http://localhost:{port}")
     print("🚀 Press Ctrl+C to stop the server")
     

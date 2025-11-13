@@ -1,6 +1,6 @@
-# Toonify - AI-Powered Image Transformation Tool
+# Reframe - AI-Powered Image Transformation Tool
 
-Transform your photos into amazing cartoons using cutting-edge AI technology with OpenCV fallback! Toonify features a beautiful modern web interface with pink gradient themes and uses advanced machine learning models for the best results, but automatically falls back to robust OpenCV techniques when AI is unavailable.
+Transform your photos into amazing cartoons using cutting-edge AI technology with OpenCV fallback! Reframe features a beautiful modern web interface with pink gradient themes and uses advanced machine learning models for the best results, but automatically falls back to robust OpenCV techniques when AI is unavailable.
 
 ## 🚀 Features
 
@@ -45,7 +45,7 @@ pip install -r requirements.txt
    - Create a free account or log in
    - Navigate to [Settings > Access Tokens](https://huggingface.co/settings/tokens)
    - Click "New token"
-   - Give it a name (e.g., "Toonify App")
+   - Give it a name (e.g., "Reframe App")
    - Select "Read" permissions
    - Click "Generate a token"
    - Copy the token (it starts with `hf_`)
@@ -132,7 +132,7 @@ The app intelligently handles processing failures:
 ## 📁 Project Structure
 
 ```
-toonify/
+reframe/
 ├── main.py                 # FastAPI application and API routes
 ├── run.py                  # Application runner script
 ├── auth.py                 # User authentication system (legacy)

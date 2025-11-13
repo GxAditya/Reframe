@@ -320,7 +320,7 @@ function getDownloadFilename(imageId, prefix = 'image') {
     if (imageId === 'original-image') {
         return `original_${timestamp}.png`;
     } else if (imageId === 'result-image') {
-        return `toonify_${style}_${timestamp}.png`;
+        return `reframe_${style}_${timestamp}.png`;
     } else {
         return `${prefix}_${style}_${timestamp}.png`;
     }
@@ -394,7 +394,7 @@ function maximizeVariant(variantName, imageData) {
 function downloadVariant(variantName, imageData) {
     const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '');
     const style = getSelectedStyle() || 'style';
-    const filename = `toonify_${style}_${variantName}_${timestamp}.png`;
+    const filename = `reframe_${style}_${variantName}_${timestamp}.png`;
     downloadImageData(imageData, filename);
 }
 
@@ -674,6 +674,7 @@ function clearUserData() {
     if (confirm('Are you sure you want to clear all your data? This action cannot be undone.')) {
         localStorage.removeItem(`userStats_${currentUser}`);
         localStorage.removeItem(`userPrefs_${currentUser}`);
+        localStorage.removeItem(`userSecurity_${currentUser}`);
         loadDashboardData(); // Reload with defaults
         showToast('User data cleared successfully', 'success');
     }

@@ -14,14 +14,14 @@ import os
 from toonify import create_cartoon_effect_ai, test_ai_connection, create_variants_opencv, has_variants
 from opencv_fallback import create_artistic_effect
 
-app = FastAPI(title="Toonify API", description="AI-Powered Image Transformation Tool")
+app = FastAPI(title="Reframe API", description="AI-Powered Image Transformation Tool")
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Simple in-memory rate limiting (per-user)
-RATE_LIMIT_MAX = int(os.environ.get("TOONIFY_RATE_LIMIT_MAX", "10"))  # requests per window
-RATE_LIMIT_WINDOW_SECONDS = int(os.environ.get("TOONIFY_RATE_LIMIT_WINDOW", "86400"))  # default 24h
+RATE_LIMIT_MAX = int(os.environ.get("REFRAME_RATE_LIMIT_MAX", "10"))  # requests per window
+RATE_LIMIT_WINDOW_SECONDS = int(os.environ.get("REFRAME_RATE_LIMIT_WINDOW", "86400"))  # default 24h
 _rate_limit_store = {}
 
 def _get_rate_bucket(username: str):
