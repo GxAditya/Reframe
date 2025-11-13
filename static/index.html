@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toonify - AI Image Transformation</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <div class="hero-section hero-fullcluster">
+                <div class="cluster-stage" aria-hidden="false">
+                    <!-- art-focused clustered images (sketch, watercolor, cartoon, oil) from Unsplash -->
+                     <img class="cluster-img img-1" src="/static/pencil-sketch.png" alt="pencil sketch sample">
+                    <img class="cluster-img img-2" src="/static/water-color.png" alt="watercolor sample">
+                    <img class="cluster-img img-3" src="/static/cartoon.png" alt="cartoon style sample">
+                    <img class="cluster-img img-4" src="/static/oil-painting.png" alt="oil painting sample">
+
+                    <div class="hero-overlay">
+                        <h1 class="main-title">Toonify</h1>
+                        <button class="btn btn-primary hero-single-cta" onclick="showAuth()">Start Creating</button>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="vertical-tree" aria-label="Key Features">
+                <div class="tree-trunk" aria-hidden="true"></div>
+
+                <div class="tree-item left">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">photo</span></div>
+                        <div class="feature-body">
+                            <h4>Cartoon Style</h4>
+                            <p>Bold colors and crisp edges for a polished animated look.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-item right">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">edit</span></div>
+                        <div class="feature-body">
+                            <h4>Pencil Sketch</h4>
+                            <p>Hand-drawn aesthetics with expressive pencil strokes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-item left">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">brush</span></div>
+                        <div class="feature-body">
+                            <h4>Watercolor</h4>
+                            <p>Soft gradients and flowy textures for dreamy visuals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-item right">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">palette</span></div>
+                        <div class="feature-body">
+                            <h4>Oil Painting</h4>
+                            <p>Rich textures and depth inspired by classic oil art.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-item left">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">smart_toy</span></div>
+                        <div class="feature-body">
+                            <h4>AI Processing</h4>
+                            <p>State-of-the-art models for professional results in seconds.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-item right">
+                    <div class="branch-connector" aria-hidden="true"></div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">shield</span></div>
+                        <div class="feature-body">
+                            <h4>Privacy First</h4>
+                            <p>On-device processing options and auto-deletion for safety.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Auth Page -->
+        <div id="auth-page" class="page">
+            <button class="back-btn" onclick="showLanding()">← Back to Home</button>
+            
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="showLogin()">Login</button>
+                    <button class="tab-btn" onclick="showRegister()">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h2>Welcome Back!</h2>
+                    <form onsubmit="login(event)">
+                        <div class="form-group">
+                            <input type="text" id="login-username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form">
+                    <h2>Create Account</h2>
+                    <form onsubmit="register(event)">
+                        <div class="form-group">
+                            <input type="text" id="register-username" placeholder="Choose a username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-password" placeholder="Choose a password (min 8 chars)" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="main-app" class="page">
+            <header class="app-header">
+                <h1>Toonify</h1>
+                <div class="user-info">
+                    <button class="username-btn" id="username-display" onclick="showDashboard()"></button>
+                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                </div>
+            </header>
+            <!-- Upgrade Banner (Transformation Page) -->
+            <div class="upgrade-banner" role="region" aria-label="Upgrade to Premium">
+                <div class="upgrade-text">Unlock more transformations and AI priority.</div>
+                <a class="btn btn-primary upgrade-btn" href="/payment">Upgrade to Premium</a>
+            </div>
+
+            <div class="app-content">
+                <div class="main-content">
+                    <!-- Upload Section -->
+                    <div class="upload-section">
+                        <label class="upload-label">Upload your image:</label>
+                        <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)" style="display: none;">
+                        <button class="btn btn-secondary browse-btn" onclick="document.getElementById('file-input').click()">Browse</button>
+                        <span id="file-name" class="file-name"></span>
+                    </div>
+
+                    <!-- Transformation Options -->
+                    <div class="transformation-options">
+                        <div class="style-options">
+                            <label class="style-option">
+                                <input type="radio" name="style" value="cartoon" checked>
+                                <span>Cartoon</span>
+                            </label>
+                            
+                            <label class="style-option">
+                                <input type="radio" name="style" value="sketch">
+                                <span>Sketch</span>
+                            </label>
+                            
+                            <label class="style-option">
+                                <input type="radio" name="style" value="watercolor">
+                                <span>Watercolor</span>
+                            </label>
+                            
+                            <label class="style-option">
+                                <input type="radio" name="style" value="oilpaint">
+                                <span>Oil Paint</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Filter Parameters (shown after first transformation) -->
+                    <div id="filter-parameters" class="filter-parameters" style="display: none;">
+                        <h4>Adjust Parameters</h4>
+                        <div class="parameter-controls">
+                            <div class="parameter-group">
+                                <label for="intensity-slider">Intensity</label>
+                                <input type="range" id="intensity-slider" min="0.1" max="2.0" step="0.1" value="1.0">
+                                <span id="intensity-value">1.0</span>
+                            </div>
+                            <div class="parameter-group">
+                                <label for="blur-slider">Blur</label>
+                                <input type="range" id="blur-slider" min="1" max="15" step="1" value="7">
+                                <span id="blur-value">7</span>
+                            </div>
+                            <div class="parameter-group">
+                                <label for="edge-slider">Edge Threshold</label>
+                                <input type="range" id="edge-slider" min="50" max="200" step="10" value="100">
+                                <span id="edge-value">100</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="applyParameterChanges()">Apply Changes</button>
+                    </div>
+
+                    <!-- Transformation Section -->
+                    <div id="image-section" class="image-section" style="display: none;">
+                        <div class="transform-controls">
+                            <div class="transform-row">
+                                <div class="processing-options">
+                                    <label class="processing-option">
+                                        <input type="radio" name="processing" value="opencv" checked>
+                                        <span>Standard</span>
+                                    </label>
+                                    
+                                    <label class="processing-option">
+                                        <input type="radio" name="processing" value="ai">
+                                        <span>AI</span>
+                                    </label>
+                                </div>
+                                
+                                <button class="btn btn-primary transform-btn" onclick="transformImage()" aria-describedby="transform-help">
+                                    <span id="transform-text">✨ Apply Transformation</span>
+                                    <div id="loading-spinner" class="spinner" style="display: none;" aria-hidden="true"></div>
+                                </button>
+                            </div>
+                            <p id="transform-help" class="help-text">This will process your image with the selected style</p>
+                        </div>
+
+                        <!-- Results Section -->
+                        <div class="results-section">
+                            <div class="image-comparison">
+                                <!-- Original Image -->
+                                <div class="image-container original-container">
+                                    <div class="image-header">
+                                        <h3>Original</h3>
+                                        <div class="image-actions">
+                                            <button id="action-btn" onclick="maximizeImage('original-image', 'Original Image')" 
+                                                    aria-label="View original image in fullscreen" title="Fullscreen">
+                                                <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="image-wrapper">
+                                        <img id="original-image" alt="Original image" loading="lazy">
+                                    </div>
+                                </div>
+
+                                <!-- Result Image -->
+                                <div class="image-container result-container">
+                                    <div class="image-header">
+                                        <h3>Transformed</h3>
+                                        <div class="image-actions" id="result-actions" style="display: none;">
+                                            <button class="action-btn" onclick="maximizeImage('result-image', 'Transformed Image')" 
+                                                    aria-label="View transformed image in fullscreen" title="Fullscreen">
+                                                <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
+                                            </button>
+                                            <button class="action-btn download-btn" onclick="downloadImage('result-image', 'transformed')" 
+                                                    aria-label="Download transformed image" title="Download">
+                                                <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="image-wrapper">
+                                        <div id="result-placeholder" class="result-placeholder">
+                                            <div class="placeholder-icon">🎨</div>
+                                            <p>Your transformed image will appear here</p>
+                                        </div>
+                                        <img id="result-image" alt="Transformed image" style="display: none;" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Style Variants Section -->
+                        <div id="variants-section" class="variants-section" style="display: none;">
+                            <h3>Style Variations</h3>
+                            <div id="variants-container" class="variants-grid" role="grid" aria-label="Style variations"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="user-dashboard" class="page">
+            <header class="app-header">
+                <h1>Toonify</h1>
+                <div class="user-info">
+                    <button class="username-btn" id="dashboard-username-display" onclick="showDashboard()"></button>
+                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                </div>
+            </header>
+            <!-- Upgrade Banner (Dashboard) -->
+            <div class="upgrade-banner" role="region" aria-label="Upgrade to Premium">
+                <div class="upgrade-text">You’re on the free plan. Go premium for higher limits.</div>
+                <a class="btn btn-primary upgrade-btn" href="/payment">Upgrade to Premium</a>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <button class="back-btn" onclick="showMainApp()">← Back to Editor</button>
+                    <h2>User Dashboard</h2>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Transformation Statistics by Category -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon">📊</div>
+                            <h3>Transformation Statistics</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number" id="cartoon-count">0</div>
+                                    <div class="stat-label">🖼️ Cartoon</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="sketch-count">0</div>
+                                    <div class="stat-label">✏️ Sketch</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="watercolor-count">0</div>
+                                    <div class="stat-label">🎭 Watercolor</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="oilpaint-count">0</div>
+                                    <div class="stat-label">🖌️ Oil Paint</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="ai-transformations">0</div>
+                                    <div class="stat-label">🤖 AI Used</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="total-transformations">0</div>
+                                    <div class="stat-label">📈 Total</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Security -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon">🔐</div>
+                            <h3>Account Security</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="security-actions">
+                                <button class="security-btn" onclick="showChangeUsername()">
+                                    <div class="security-icon">👤</div>
+                                    <div class="security-text">
+                                        <h4>Change Username</h4>
+                                        <p>Update your display name</p>
+                                    </div>
+                                </button>
+                                <button class="security-btn" onclick="showChangePassword()">
+                                    <div class="security-icon">🔑</div>
+                                    <div class="security-text">
+                                        <h4>Change Password</h4>
+                                        <p>Update your account password</p>
+                                    </div>
+                                </button>
+                                <button class="security-btn" onclick="showSecurityQuestion()">
+                                    <div class="security-icon">❓</div>
+                                    <div class="security-text">
+                                        <h4>Security Question</h4>
+                                        <p>Set up account recovery</p>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <!-- Security Modals -->
+                <div id="change-username-modal" class="security-modal" style="display: none;">
+                    <div class="modal-overlay" onclick="closeSecurityModal()"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Change Username</h3>
+                            <button class="close-btn" onclick="closeSecurityModal()">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form onsubmit="changeUsername(event)">
+                                <div class="form-group">
+                                    <label>Current Username:</label>
+                                    <input type="text" id="current-username-display" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Username:</label>
+                                    <input type="text" id="new-username" placeholder="Enter new username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Security Question:</label>
+                                    <span id="username-security-question">What is your favorite color?</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Answer:</label>
+                                    <input type="text" id="username-security-answer" placeholder="Enter your answer" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="closeSecurityModal()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Change Username</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="change-password-modal" class="security-modal" style="display: none;">
+                    <div class="modal-overlay" onclick="closeSecurityModal()"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Change Password</h3>
+                            <button class="close-btn" onclick="closeSecurityModal()">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form onsubmit="changePassword(event)">
+                                <div class="form-group">
+                                    <label>Current Password:</label>
+                                    <input type="password" id="current-password" placeholder="Enter current password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password:</label>
+                                    <input type="password" id="new-password" placeholder="Enter new password (min 8 chars)" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password:</label>
+                                    <input type="password" id="confirm-new-password" placeholder="Confirm new password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Security Question:</label>
+                                    <span id="password-security-question">What is your favorite color?</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Answer:</label>
+                                    <input type="text" id="password-security-answer" placeholder="Enter your answer" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="closeSecurityModal()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Change Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="security-question-modal" class="security-modal" style="display: none;">
+                    <div class="modal-overlay" onclick="closeSecurityModal()"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Set Security Question</h3>
+                            <button class="close-btn" onclick="closeSecurityModal()">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form onsubmit="setSecurityQuestion(event)">
+                                <div class="form-group">
+                                    <label>Choose Security Question:</label>
+                                    <select id="security-question-select" class="form-control" required>
+                                        <option value="">Select a question...</option>
+                                        <option value="What is your favorite color?">What is your favorite color?</option>
+                                        <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                                        <option value="What city were you born in?">What city were you born in?</option>
+                                        <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                                        <option value="What was your first car?">What was your first car?</option>
+                                        <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Your Answer:</label>
+                                    <input type="text" id="security-answer" placeholder="Enter your answer" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Answer:</label>
+                                    <input type="text" id="confirm-security-answer" placeholder="Confirm your answer" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="closeSecurityModal()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Set Security Question</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div id="fullscreen-modal" class="fullscreen-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" onclick="closeFullscreen()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Image Preview</h3>
+                <div class="modal-actions">
+                    <button class="modal-btn download-btn" id="modal-download" onclick="downloadCurrentImage()" 
+                            aria-label="Download image" title="Download">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        Download
+                    </button>
+                    <button class="modal-btn close-btn" onclick="closeFullscreen()" 
+                            aria-label="Close fullscreen view" title="Close">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                        Close
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" alt="" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

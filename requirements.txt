@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-multipart
+passlib
+opencv-python
+numpy
+Pillow
+huggingface_hub
+python-dotenv
+PyJWT

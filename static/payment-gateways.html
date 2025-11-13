@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment - Toonify</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <style>
+        .payment-section { padding: 40px 0; }
+        .plan-summary { background: rgba(255,255,255,0.95); border: 2px solid rgba(255,182,193,0.18); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 28px; }
+        .plan-summary h3 { margin: 0 0 6px 0; color: var(--slate-900); font-size: 1.15rem; }
+        .plan-summary .plan-price { font-weight: 800; color: var(--pink-500); font-size: 1.6rem; }
+        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .gateway-card { background: rgba(255,255,255,0.96); border: 1px solid rgba(255,182,193,0.12); border-radius: 12px; padding: 22px; text-align: left; transition: box-shadow .2s ease, transform .2s ease; }
+        .gateway-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+        .gateway-row { display:flex; align-items:center; gap:16px; margin-bottom:12px; }
+        .gateway-icon { width:48px; height:48px; background:var(--gradient-primary); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; }
+        .gateway-title { font-weight:700; color:var(--slate-900); font-size:1rem; }
+        .gateway-description { color:var(--slate-600); font-size:0.92rem; margin:0 0 12px 0; }
+        .gateway-button { width:100%; padding:12px 14px; border-radius:10px; border:none; background:var(--gradient-primary); color:#fff; font-weight:600; cursor:pointer; }
+        .gateway-button[disabled] { opacity:0.6; cursor:not-allowed; }
+        .security-notice { margin-top:20px; background:linear-gradient(135deg, rgba(255,107,157,0.03), rgba(248,165,194,0.03)); padding:16px; border-radius:10px; text-align:center; color:var(--slate-700); font-size:0.95rem; }
+        @media (max-width:600px){ .gateway-card{ text-align:left; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Toonify</h1>
+            <div class="user-info">
+                <a class="btn btn-secondary" href="/payment">Back to Plans</a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <section class="payment-section">
+                <div class="plan-summary">
+                    <h3>Selected Plan: <span id="selected-plan-name">-</span></h3>
+                    <div class="plan-price">₹<span id="selected-plan-price">-</span></div>
+                    <p class="section-subtitle" style="margin-top:8px;">Secure payment powered by industry-leading gateways</p>
+                </div>
+
+                <div class="gateway-grid" id="gateway-grid">
+                    <div class="gateway-card">
+                        <div class="gateway-row">
+                            <div class="gateway-icon"><span class="material-symbols-rounded">credit_card</span></div>
+                            <div>
+                                <div class="gateway-title">Credit / Debit Card</div>
+                                <div class="gateway-description">Accept major cards via a secure, PCI-compliant checkout.</div>
+                            </div>
+                        </div>
+                        <button class="gateway-button" id="pay-card">Pay with Card</button>
+                    </div>
+
+                    <div class="gateway-card">
+                        <div class="gateway-row">
+                            <div class="gateway-icon"><span class="material-symbols-rounded">account_balance</span></div>
+                            <div>
+                                <div class="gateway-title">Net Banking</div>
+                                <div class="gateway-description">Redirect to your bank for a secure transfer.</div>
+                            </div>
+                        </div>
+                        <button class="gateway-button" id="pay-netbanking">Pay via Net Banking</button>
+                    </div>
+
+                    <div class="gateway-card">
+                        <div class="gateway-row">
+                            <div class="gateway-icon"><span class="material-symbols-rounded">smartphone</span></div>
+                            <div>
+                                <div class="gateway-title">UPI</div>
+                                <div class="gateway-description">Instant payments using UPI apps and QR flows.</div>
+                            </div>
+                        </div>
+                        <button class="gateway-button" id="pay-upi">Pay with UPI</button>
+                    </div>
+
+                    <div class="gateway-card">
+                        <div class="gateway-row">
+                            <div class="gateway-icon"><span class="material-symbols-rounded">language</span></div>
+                            <div>
+                                <div class="gateway-title">PayPal</div>
+                                <div class="gateway-description">Fast checkout with your PayPal account.</div>
+                            </div>
+                        </div>
+                        <button class="gateway-button" id="pay-paypal">Pay with PayPal</button>
+                    </div>
+                </div>
+
+                <div class="security-notice">
+                    <strong>Payment security</strong>
+                    <div style="margin-top:8px;">We use bank-grade encryption and comply with PCI-DSS standards.</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+    (function(){
+        function getQueryParam(name){ const params = new URLSearchParams(window.location.search); return params.get(name); }
+
+        const plan = getQueryParam('plan') || 'starter';
+        const planNames = { starter: 'Starter', pro: 'Professional' };
+        const planPrices = { starter: '499', pro: '1,499' };
+
+        document.getElementById('selected-plan-name').textContent = planNames[plan] || 'Starter';
+        document.getElementById('selected-plan-price').textContent = planPrices[plan] || '499';
+
+        function showProcessing(button){ const original = button.textContent; button.textContent = 'Processing...'; button.disabled = true; return () => { button.textContent = original; button.disabled = false; }; }
+
+        function selectGateway(method){
+            const amount = planPrices[plan] || '499';
+            const planName = planNames[plan] || 'Starter';
+            const button = document.getElementById(`pay-${method}`);
+            if(!button) return;
+            const restore = showProcessing(button);
+
+            // Simulated redirect/demo handler - replace with real gateway integration
+            setTimeout(() => {
+                alert(`${method.toUpperCase()} gateway: proceeding to pay ₹${amount} for the ${planName} plan.\n\nThis is a demo.`);
+                restore();
+            }, 1000);
+        }
+
+        ['card','netbanking','upi','paypal'].forEach(m => {
+            const el = document.getElementById(`pay-${m}`);
+            if(el) el.addEventListener('click', (e) => { e.preventDefault(); selectGateway(m); });
+        });
+    })();
+    </script>
+</body>
+</html>
+
