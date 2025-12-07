@@ -403,6 +403,9 @@ function initializeFileUpload() {
     const fileInput = document.getElementById('file-input');
     const uploadLabel = document.querySelector('.file-upload-label');
 
+    if (!fileInput) return;
+    if (!uploadLabel) return;
+
     // Drag and drop functionality
     uploadLabel.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -464,11 +467,18 @@ function handleFileSelect(event) {
         originalImg.dataset.imageData = '';
 
         // Show image section and hide previous results
-        document.getElementById('image-section').style.display = 'block';
-        document.getElementById('result-image').style.display = 'none';
-        document.getElementById('result-actions').style.display = 'none';
-        document.getElementById('variants-section').style.display = 'none';
-        document.getElementById('filter-parameters').style.display = 'none';
+        const imageSection = document.getElementById('results-section') || document.querySelector('.results-section');
+        if (imageSection) imageSection.style.display = 'block';
+
+        const resultImage = document.getElementById('result-image');
+        const resultActions = document.getElementById('result-actions');
+        const variantsSection = document.getElementById('variants-section');
+        const filterParameters = document.getElementById('filter-parameters');
+
+        if (resultImage) resultImage.style.display = 'none';
+        if (resultActions) resultActions.style.display = 'none';
+        if (variantsSection) variantsSection.style.display = 'none';
+        if (filterParameters) filterParameters.style.display = 'none';
 
         // Show result placeholder
         const placeholder = document.querySelector('.result-placeholder');
@@ -498,12 +508,19 @@ async function transformImage() {
     const transformText = document.getElementById('transform-text');
     const loadingSpinner = document.getElementById('loading-spinner');
 
-    transformBtn.disabled = true;
-    transformText.textContent = `✨ Creating ${style} masterpiece...`;
-    loadingSpinner.style.display = 'block';
+    if (transformBtn) {
+        transformBtn.disabled = true;
+    }
+    if (transformText) {
+        transformText.textContent = `Applying ${style} style...`;
+    }
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'block';
+    }
 
     // Hide result placeholder
-    document.querySelector('.result-placeholder').style.display = 'none';
+    const placeholder = document.querySelector('.result-placeholder');
+    if (placeholder) placeholder.style.display = 'none';
 
     try {
         const formData = new FormData();
@@ -546,12 +563,13 @@ async function transformImage() {
 
     } catch (error) {
         showToast('❌ Transformation failed: ' + error.message, 'error');
-        document.querySelector('.result-placeholder').style.display = 'flex';
+        const placeholder = document.querySelector('.result-placeholder');
+        if (placeholder) placeholder.style.display = 'flex';
     } finally {
         // Reset loading state
-        transformBtn.disabled = false;
-        transformText.textContent = '✨ Apply Transformation';
-        loadingSpinner.style.display = 'none';
+        if (transformBtn) transformBtn.disabled = false;
+        if (transformText) transformText.textContent = 'Apply';
+        if (loadingSpinner) loadingSpinner.style.display = 'none';
     }
 }
 

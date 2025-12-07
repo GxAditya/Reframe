@@ -7,23 +7,6 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-    <style>
-        .payment-section { padding: 40px 0; }
-        .plan-summary { background: rgba(255,255,255,0.95); border: 2px solid rgba(255,182,193,0.18); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 28px; }
-        .plan-summary h3 { margin: 0 0 6px 0; color: var(--slate-900); font-size: 1.15rem; }
-        .plan-summary .plan-price { font-weight: 800; color: var(--pink-500); font-size: 1.6rem; }
-        .gateway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .gateway-card { background: rgba(255,255,255,0.96); border: 1px solid rgba(255,182,193,0.12); border-radius: 12px; padding: 22px; text-align: left; transition: box-shadow .2s ease, transform .2s ease; }
-        .gateway-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
-        .gateway-row { display:flex; align-items:center; gap:16px; margin-bottom:12px; }
-        .gateway-icon { width:48px; height:48px; background:var(--gradient-primary); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; }
-        .gateway-title { font-weight:700; color:var(--slate-900); font-size:1rem; }
-        .gateway-description { color:var(--slate-600); font-size:0.92rem; margin:0 0 12px 0; }
-        .gateway-button { width:100%; padding:12px 14px; border-radius:10px; border:none; background:var(--gradient-primary); color:#fff; font-weight:600; cursor:pointer; }
-        .gateway-button[disabled] { opacity:0.6; cursor:not-allowed; }
-        .security-notice { margin-top:20px; background:linear-gradient(135deg, rgba(255,107,157,0.03), rgba(248,165,194,0.03)); padding:16px; border-radius:10px; text-align:center; color:var(--slate-700); font-size:0.95rem; }
-        @media (max-width:600px){ .gateway-card{ text-align:left; } }
-    </style>
 </head>
 <body>
     <div class="container">

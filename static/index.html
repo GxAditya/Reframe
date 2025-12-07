@@ -12,131 +12,313 @@
     <div class="container">
         <!-- Landing Page -->
         <div id="landing-page" class="page active">
-            <div class="hero-section hero-fullcluster">
-                <div class="cluster-stage" aria-hidden="false">
-                    <!-- art-focused clustered images (sketch, watercolor, cartoon, oil) from Unsplash -->
-                     <img class="cluster-img img-1" src="/static/pencil-sketch.png" alt="pencil sketch sample">
-                    <img class="cluster-img img-2" src="/static/water-color.png" alt="watercolor sample">
-                    <img class="cluster-img img-3" src="/static/cartoon.png" alt="cartoon style sample">
-                    <img class="cluster-img img-4" src="/static/oil-painting.png" alt="oil painting sample">
-
-                    <div class="hero-overlay">
-                        <h1 class="main-title">Reframe</h1>
-                        <button class="btn btn-primary hero-single-cta" onclick="showAuth()">Start Creating</button>
+            <!-- Navigation -->
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="brand">
+                        <span class="brand-name">Reframe</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#features" class="nav-link">Features</a>
+                        <a href="#how-it-works" class="nav-link">How It Works</a>
+                        <a href="#showcase" class="nav-link">Gallery</a>
+                        <a href="#pricing" class="nav-link">Pricing</a>
+                    </div>
+                    <div class="nav-actions">
+                        <button class="btn-text" onclick="showAuth()">Login</button>
+                        <button class="btn btn-primary" onclick="showAuth()">Get Started Free</button>
                     </div>
                 </div>
-            </div>
-            
-            <section class="vertical-tree" aria-label="Key Features">
-                <div class="tree-trunk" aria-hidden="true"></div>
+            </nav>
 
-                <div class="tree-item left">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">photo</span></div>
-                        <div class="feature-body">
-                            <h4>Cartoon Style</h4>
-                            <p>Bold colors and crisp edges for a polished animated look.</p>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="material-symbols-rounded">verified</span>
+                        <span>AI-Powered Image Transformation</span>
+                    </div>
+                    <h1 class="hero-title">Transform Your Images Into <span class="gradient-text">Stunning Art</span></h1>
+                    <p class="hero-description">Convert ordinary photos into extraordinary artwork with AI. Choose from cartoon, sketch, watercolor, and oil painting styles—all in seconds.</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="showAuth()">Start Creating Free</button>
+                        <button class="btn btn-secondary btn-large" onclick="document.getElementById('showcase').scrollIntoView({behavior: 'smooth'})">View Examples</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <img src="/static/cartoon.png" alt="Cartoon style example">
+                        <div class="card-label">Cartoon</div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <img src="/static/pencil-sketch.png" alt="Sketch style example">
+                        <div class="card-label">Sketch</div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <img src="/static/water-color.png" alt="Watercolor style example">
+                        <div class="card-label">Watercolor</div>
+                    </div>
+                    <div class="floating-card card-4">
+                        <img src="/static/oil-painting.png" alt="Oil painting style example">
+                        <div class="card-label">Oil Paint</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <div class="section-header-center">
+                    <span class="section-badge">Features</span>
+                    <h2 class="section-title">Everything You Need to Create Amazing Art</h2>
+                    <p class="section-description">Powerful tools designed for creators, simplified for everyone</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">palette</span>
+                        </div>
+                        <h3 class="feature-title">Multiple Art Styles</h3>
+                        <p class="feature-description">Transform images into cartoon, pencil sketch, watercolor, or oil painting styles with a single click.</p>
+                    </div>
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">flash_on</span>
+                        </div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-description">AI-powered processing delivers stunning results in under 30 seconds. No waiting, just creating.</p>
+                    </div>
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">tune</span>
+                        </div>
+                        <h3 class="feature-title">Fine-Tune Controls</h3>
+                        <p class="feature-description">Adjust intensity, blur, and edge parameters to get exactly the look you want.</p>
+                    </div>
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">lock</span>
+                        </div>
+                        <h3 class="feature-title">Privacy First</h3>
+                        <p class="feature-description">Your images are processed securely and automatically deleted. We respect your privacy.</p>
+                    </div>
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">high_quality</span>
+                        </div>
+                        <h3 class="feature-title">High Quality Output</h3>
+                        <p class="feature-description">Export in full resolution with no watermarks. Your art, your way.</p>
+                    </div>
+                    <div class="feature-card-new">
+                        <div class="feature-icon-wrapper">
+                            <span class="material-symbols-rounded">devices</span>
+                        </div>
+                        <h3 class="feature-title">Works Everywhere</h3>
+                        <p class="feature-description">Access from any device with a browser. No downloads or installations required.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section id="how-it-works" class="how-it-works-section">
+                <div class="section-header-center">
+                    <span class="section-badge">Process</span>
+                    <h2 class="section-title">Simple 3-Step Process</h2>
+                    <p class="section-description">From upload to masterpiece in minutes</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <span class="material-symbols-rounded">upload_file</span>
+                        </div>
+                        <h3 class="step-title">Upload Your Image</h3>
+                        <p class="step-description">Drag and drop or browse to select any image from your device.</p>
+                    </div>
+                    <div class="step-arrow">
+                        <span class="material-symbols-rounded">arrow_forward</span>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <span class="material-symbols-rounded">auto_fix_high</span>
+                        </div>
+                        <h3 class="step-title">Choose Your Style</h3>
+                        <p class="step-description">Select from cartoon, sketch, watercolor, or oil painting effects.</p>
+                    </div>
+                    <div class="step-arrow">
+                        <span class="material-symbols-rounded">arrow_forward</span>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <span class="material-symbols-rounded">download</span>
+                        </div>
+                        <h3 class="step-title">Download & Share</h3>
+                        <p class="step-description">Get your transformed image instantly and share it anywhere.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Showcase Section -->
+            <section id="showcase" class="showcase-section">
+                <div class="section-header-center">
+                    <span class="section-badge">Gallery</span>
+                    <h2 class="section-title">See The Magic In Action</h2>
+                    <p class="section-description">Real transformations from our users</p>
+                </div>
+                <div class="showcase-grid">
+                    <div class="showcase-item">
+                        <img src="/static/reframe_oilpaint.png" alt="Oil painting transformation">
+                        <div class="showcase-overlay">
+                            <span class="showcase-label">Oil Painting</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="tree-item right">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">edit</span></div>
-                        <div class="feature-body">
-                            <h4>Pencil Sketch</h4>
-                            <p>Hand-drawn aesthetics with expressive pencil strokes.</p>
+                    <div class="showcase-item">
+                        <img src="/static/reframe_sketch.png" alt="Sketch transformation">
+                        <div class="showcase-overlay">
+                            <span class="showcase-label">Pencil Sketch</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="tree-item left">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">brush</span></div>
-                        <div class="feature-body">
-                            <h4>Watercolor</h4>
-                            <p>Soft gradients and flowy textures for dreamy visuals.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tree-item right">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">palette</span></div>
-                        <div class="feature-body">
-                            <h4>Oil Painting</h4>
-                            <p>Rich textures and depth inspired by classic oil art.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tree-item left">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">smart_toy</span></div>
-                        <div class="feature-body">
-                            <h4>AI Processing</h4>
-                            <p>State-of-the-art models for professional results in seconds.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tree-item right">
-                    <div class="branch-connector" aria-hidden="true"></div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><span class="material-symbols-rounded">shield</span></div>
-                        <div class="feature-body">
-                            <h4>Privacy First</h4>
-                            <p>On-device processing options and auto-deletion for safety.</p>
+                    <div class="showcase-item">
+                        <img src="/static/reframe_watercolor.png" alt="Watercolor transformation">
+                        <div class="showcase-overlay">
+                            <span class="showcase-label">Watercolor</span>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="pricing-section-new">
+                <div class="section-header-center">
+                    <span class="section-badge">Pricing</span>
+                    <h2 class="section-title">Choose Your Plan</h2>
+                    <p class="section-description">Start free, upgrade when you need more</p>
+                </div>
+                <div class="pricing-cards">
+                    <div class="pricing-card-new">
+                        <div class="pricing-header">
+                            <h3 class="pricing-name">Free</h3>
+                            <div class="pricing-price-new">
+                                <span class="price">$0</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features-new">
+                            <li><span class="material-symbols-rounded check">check_circle</span>5 transformations/day</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>All 4 art styles</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>Standard processing</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>Basic adjustments</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-full" onclick="showAuth()">Get Started</button>
+                    </div>
+                    <div class="pricing-card-new featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-name">Premium</h3>
+                            <div class="pricing-price-new">
+                                <span class="price">$9</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features-new">
+                            <li><span class="material-symbols-rounded check">check_circle</span>Unlimited transformations</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>All 4 art styles</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>AI priority processing</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>Advanced fine-tuning</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>HD export quality</li>
+                            <li><span class="material-symbols-rounded check">check_circle</span>Priority support</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full" onclick="showAuth()">Upgrade Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Images?</h2>
+                    <p class="cta-description">Join thousands of creators making stunning art with Reframe</p>
+                    <button class="btn btn-primary btn-large" onclick="showAuth()">Start Creating Now</button>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-simple">
+                    <div class="footer-links-simple">
+                        <a href="#features">Features</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#showcase">Showcase</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <p class="footer-copyright">&copy; 2025 Reframe. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
 
         <!-- Auth Page -->
         <div id="auth-page" class="page">
-            <button class="back-btn" onclick="showLanding()">← Back to Home</button>
-            
-            <div class="auth-container">
-                <div class="auth-tabs">
-                    <button class="tab-btn active" onclick="showLogin()">Login</button>
-                    <button class="tab-btn" onclick="showRegister()">Register</button>
+            <button class="back-btn" onclick="showLanding()">Back</button>
+
+            <div class="auth-shell tight">
+                <div class="auth-panel">
+                    <div class="auth-tabs">
+                        <button class="tab-btn active" onclick="showLogin()">Login</button>
+                        <button class="tab-btn" onclick="showRegister()">Register</button>
+                    </div>
+
+                    <div class="auth-form-header">
+                        <h2 id="auth-title">Welcome back</h2>
+                        <p class="form-sub" id="auth-sub">Sign in to continue transforming.</p>
+                    </div>
+
+                    <!-- Login Form -->
+                    <div id="login-form" class="auth-form active">
+                        <form onsubmit="login(event)">
+                            <div class="form-group">
+                                <label for="login-username">Username</label>
+                                <input type="text" id="login-username" placeholder="yourname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input type="password" id="login-password" placeholder="••••••••" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary full">Login</button>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="register-form" class="auth-form">
+                        <form onsubmit="register(event)">
+                            <div class="form-group">
+                                <label for="register-username">Username</label>
+                                <input type="text" id="register-username" placeholder="choose a handle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <input type="password" id="register-password" placeholder="Minimum 8 characters" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" placeholder="Match your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary full">Create account</button>
+                        </form>
+                    </div>
                 </div>
 
-                <!-- Login Form -->
-                <div id="login-form" class="auth-form active">
-                    <h2>Welcome Back!</h2>
-                    <form onsubmit="login(event)">
-                        <div class="form-group">
-                            <input type="text" id="login-username" placeholder="Username" required>
+                <div class="auth-aside muted-panel">
+                    <div class="aside-card">
+                        <div class="aside-title">Fast onboarding</div>
+                        <p>Drop a sample, pick a style, and see your first result before your coffee cools.</p>
+                        <div class="aside-pills">
+                            <span class="pill">Direct downloads</span>
+                            <span class="pill">Fullscreen review</span>
+                            <span class="pill">Dashboard stats</span>
                         </div>
-                        <div class="form-group">
-                            <input type="password" id="login-password" placeholder="Password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-
-                <!-- Register Form -->
-                <div id="register-form" class="auth-form">
-                    <h2>Create Account</h2>
-                    <form onsubmit="register(event)">
-                        <div class="form-group">
-                            <input type="text" id="register-username" placeholder="Choose a username" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="register-password" placeholder="Choose a password (min 8 chars)" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="confirm-password" placeholder="Confirm password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,138 +339,146 @@
             </div>
 
             <div class="app-content">
-                <div class="main-content">
-                    <!-- Upload Section -->
-                    <div class="upload-section">
-                        <label class="upload-label">Upload your image:</label>
-                        <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)" style="display: none;">
-                        <button class="btn btn-secondary browse-btn" onclick="document.getElementById('file-input').click()">Browse</button>
-                        <span id="file-name" class="file-name"></span>
-                    </div>
-
-                    <!-- Transformation Options -->
-                    <div class="transformation-options">
-                        <div class="style-options">
-                            <label class="style-option">
-                                <input type="radio" name="style" value="cartoon" checked>
-                                <span>Cartoon</span>
-                            </label>
-                            
-                            <label class="style-option">
-                                <input type="radio" name="style" value="sketch">
-                                <span>Sketch</span>
-                            </label>
-                            
-                            <label class="style-option">
-                                <input type="radio" name="style" value="watercolor">
-                                <span>Watercolor</span>
-                            </label>
-                            
-                            <label class="style-option">
-                                <input type="radio" name="style" value="oilpaint">
-                                <span>Oil Paint</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Filter Parameters (shown after first transformation) -->
-                    <div id="filter-parameters" class="filter-parameters" style="display: none;">
-                        <h4>Adjust Parameters</h4>
-                        <div class="parameter-controls">
-                            <div class="parameter-group">
-                                <label for="intensity-slider">Intensity</label>
-                                <input type="range" id="intensity-slider" min="0.1" max="2.0" step="0.1" value="1.0">
-                                <span id="intensity-value">1.0</span>
+                <div class="app-shell fal-layout">
+                    <section class="canvas-panel">
+                        <div class="top-strip">
+                            <div class="strip-left">
+                                <div class="strip-title">Transform</div>
+                                <div class="strip-sub">Choose style and processing priority.</div>
                             </div>
-                            <div class="parameter-group">
-                                <label for="blur-slider">Blur</label>
-                                <input type="range" id="blur-slider" min="1" max="15" step="1" value="7">
-                                <span id="blur-value">7</span>
+                            <div class="processing-options compact">
+                                <label class="processing-option">
+                                    <input type="radio" name="processing" value="opencv" checked>
+                                    <span>Standard</span>
+                                </label>
+                                <label class="processing-option">
+                                    <input type="radio" name="processing" value="ai">
+                                    <span>AI Priority</span>
+                                </label>
                             </div>
-                            <div class="parameter-group">
-                                <label for="edge-slider">Edge Threshold</label>
-                                <input type="range" id="edge-slider" min="50" max="200" step="10" value="100">
-                                <span id="edge-value">100</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-secondary" onclick="applyParameterChanges()">Apply Changes</button>
-                    </div>
-
-                    <!-- Transformation Section -->
-                    <div id="image-section" class="image-section" style="display: none;">
-                        <div class="transform-controls">
-                            <div class="transform-row">
-                                <div class="processing-options">
-                                    <label class="processing-option">
-                                        <input type="radio" name="processing" value="opencv" checked>
-                                        <span>Standard</span>
-                                    </label>
-                                    
-                                    <label class="processing-option">
-                                        <input type="radio" name="processing" value="ai">
-                                        <span>AI</span>
-                                    </label>
-                                </div>
-                                
-                                <button class="btn btn-primary transform-btn" onclick="transformImage()" aria-describedby="transform-help">
-                                    <span id="transform-text">✨ Apply Transformation</span>
-                                    <div id="loading-spinner" class="spinner" style="display: none;" aria-hidden="true"></div>
-                                </button>
-                            </div>
-                            <p id="transform-help" class="help-text">This will process your image with the selected style</p>
+                            <button class="btn btn-primary transform-btn" onclick="transformImage()" aria-describedby="transform-help">
+                                <span id="transform-text">Apply</span>
+                                <div id="loading-spinner" class="spinner" style="display: none;" aria-hidden="true"></div>
+                            </button>
                         </div>
 
-                        <!-- Results Section -->
-                        <div class="results-section">
-                            <div class="image-comparison">
-                                <!-- Original Image -->
-                                <div class="image-container original-container">
-                                    <div class="image-header">
-                                        <h3>Original</h3>
-                                        <div class="image-actions">
-                                            <button id="action-btn" onclick="maximizeImage('original-image', 'Original Image')" 
-                                                    aria-label="View original image in fullscreen" title="Fullscreen">
-                                                <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
-                                            </button>
-                                        </div>
+                        <div class="transform-grid">
+                            <aside class="side-panel">
+                                <div class="panel-block">
+                                    <div class="panel-heading">
+                                        <h3>Upload</h3>
+                                        <p>Drop an image and pick a look.</p>
                                     </div>
-                                    <div class="image-wrapper">
-                                        <img id="original-image" alt="Original image" loading="lazy">
+                                    <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)" style="display: none;">
+                                    <button class="btn btn-secondary browse-btn" onclick="document.getElementById('file-input').click()">Browse</button>
+                                    <span id="file-name" class="file-name"></span>
+                                </div>
+
+                                <div class="panel-block">
+                                    <div class="panel-heading">
+                                        <h3>Style</h3>
+                                        <p>Choose a direction.</p>
+                                    </div>
+                                    <div class="style-options">
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="cartoon" checked>
+                                            <span>Cartoon</span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="sketch">
+                                            <span>Sketch</span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="watercolor">
+                                            <span>Watercolor</span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="oilpaint">
+                                            <span>Oil Paint</span>
+                                        </label>
                                     </div>
                                 </div>
 
-                                <!-- Result Image -->
-                                <div class="image-container result-container">
-                                    <div class="image-header">
-                                        <h3>Transformed</h3>
-                                        <div class="image-actions" id="result-actions" style="display: none;">
-                                            <button class="action-btn" onclick="maximizeImage('result-image', 'Transformed Image')" 
-                                                    aria-label="View transformed image in fullscreen" title="Fullscreen">
-                                                <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
-                                            </button>
-                                            <button class="action-btn download-btn" onclick="downloadImage('result-image', 'transformed')" 
-                                                    aria-label="Download transformed image" title="Download">
-                                                <span class="material-symbols-rounded" aria-hidden="true">download</span>
-                                            </button>
+                                <div id="filter-parameters" class="panel-block filter-parameters" style="display: none;">
+                                    <div class="panel-heading">
+                                        <h3>Adjust</h3>
+                                        <p>Tune the render before exporting.</p>
+                                    </div>
+                                    <div class="parameter-controls">
+                                        <div class="parameter-group">
+                                            <label for="intensity-slider">Intensity</label>
+                                            <input type="range" id="intensity-slider" min="0.1" max="2.0" step="0.1" value="1.0">
+                                            <span id="intensity-value">1.0</span>
+                                        </div>
+                                        <div class="parameter-group">
+                                            <label for="blur-slider">Blur</label>
+                                            <input type="range" id="blur-slider" min="1" max="15" step="1" value="7">
+                                            <span id="blur-value">7</span>
+                                        </div>
+                                        <div class="parameter-group">
+                                            <label for="edge-slider">Edge Threshold</label>
+                                            <input type="range" id="edge-slider" min="50" max="200" step="10" value="100">
+                                            <span id="edge-value">100</span>
                                         </div>
                                     </div>
-                                    <div class="image-wrapper">
-                                        <div id="result-placeholder" class="result-placeholder">
-                                            <div class="placeholder-icon">🎨</div>
-                                            <p>Your transformed image will appear here</p>
+                                    <button class="btn btn-secondary" onclick="applyParameterChanges()">Apply</button>
+                                </div>
+                            </aside>
+
+                            <div class="canvas-stack">
+                                <div class="results-section">
+                                    <div class="image-comparison">
+                                        <div class="image-container original-container">
+                                            <div class="image-header">
+                                                <h3>Original</h3>
+                                                <div class="image-actions">
+                                                    <button id="action-btn" onclick="maximizeImage('original-image', 'Original Image')" 
+                                                            aria-label="View original image in fullscreen" title="Fullscreen">
+                                                        <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="image-wrapper">
+                                                <img id="original-image" alt="Original image" loading="lazy">
+                                            </div>
                                         </div>
-                                        <img id="result-image" alt="Transformed image" style="display: none;" loading="lazy">
+
+                                        <div class="image-container result-container">
+                                            <div class="image-header">
+                                                <h3>Transformed</h3>
+                                                <div class="image-actions" id="result-actions" style="display: none;">
+                                                    <button class="action-btn" onclick="maximizeImage('result-image', 'Transformed Image')" 
+                                                            aria-label="View transformed image in fullscreen" title="Fullscreen">
+                                                        <span class="material-symbols-rounded" aria-hidden="true">fullscreen</span>
+                                                    </button>
+                                                    <button class="action-btn download-btn" onclick="downloadImage('result-image', 'transformed')" 
+                                                            aria-label="Download transformed image" title="Download">
+                                                        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="image-wrapper">
+                                                <div id="result-placeholder" class="result-placeholder">
+                                                    <div class="placeholder-icon">•</div>
+                                                    <p>Your transformed image will appear here</p>
+                                                </div>
+                                                <img id="result-image" alt="Transformed image" style="display: none;" loading="lazy">
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div id="variants-section" class="variants-section" style="display: none;">
+                                    <div class="section-header compact">
+                                        <h3>Style variations</h3>
+                                        <p>Pick a variant or download directly.</p>
+                                    </div>
+                                    <div id="variants-container" class="variants-grid" role="grid" aria-label="Style variations"></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Style Variants Section -->
-                        <div id="variants-section" class="variants-section" style="display: none;">
-                            <h3>Style Variations</h3>
-                            <div id="variants-container" class="variants-grid" role="grid" aria-label="Style variations"></div>
-                        </div>
-                    </div>
+                        <p id="transform-help" class="help-text">Process with the selected style and method.</p>
+                    </section>
                 </div>
             </div>
         </div>
@@ -310,7 +500,7 @@
 
             <div class="dashboard-content">
                 <div class="dashboard-header">
-                    <button class="back-btn" onclick="showMainApp()">← Back to Editor</button>
+                    <button class="back-btn" onclick="showMainApp()">Back to Editor</button>
                     <h2>User Dashboard</h2>
                 </div>
 
@@ -318,34 +508,34 @@
                     <!-- Transformation Statistics by Category -->
                     <div class="dashboard-card">
                         <div class="card-header">
-                            <div class="card-icon">📊</div>
+                            <div class="card-icon"><span class="material-symbols-rounded">monitoring</span></div>
                             <h3>Transformation Statistics</h3>
                         </div>
                         <div class="card-content">
                             <div class="stats-grid">
                                 <div class="stat-item">
                                     <div class="stat-number" id="cartoon-count">0</div>
-                                    <div class="stat-label">🖼️ Cartoon</div>
+                                    <div class="stat-label">Cartoon</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-number" id="sketch-count">0</div>
-                                    <div class="stat-label">✏️ Sketch</div>
+                                    <div class="stat-label">Sketch</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-number" id="watercolor-count">0</div>
-                                    <div class="stat-label">🎭 Watercolor</div>
+                                    <div class="stat-label">Watercolor</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-number" id="oilpaint-count">0</div>
-                                    <div class="stat-label">🖌️ Oil Paint</div>
+                                    <div class="stat-label">Oil Paint</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-number" id="ai-transformations">0</div>
-                                    <div class="stat-label">🤖 AI Used</div>
+                                    <div class="stat-label">AI Used</div>
                                 </div>
                                 <div class="stat-item">
                                     <div class="stat-number" id="total-transformations">0</div>
-                                    <div class="stat-label">📈 Total</div>
+                                    <div class="stat-label">Total</div>
                                 </div>
                             </div>
                         </div>
@@ -354,27 +544,27 @@
                     <!-- Account Security -->
                     <div class="dashboard-card">
                         <div class="card-header">
-                            <div class="card-icon">🔐</div>
+                            <div class="card-icon"><span class="material-symbols-rounded">lock</span></div>
                             <h3>Account Security</h3>
                         </div>
                         <div class="card-content">
                             <div class="security-actions">
                                 <button class="security-btn" onclick="showChangeUsername()">
-                                    <div class="security-icon">👤</div>
+                                    <div class="security-icon"><span class="material-symbols-rounded">person</span></div>
                                     <div class="security-text">
                                         <h4>Change Username</h4>
                                         <p>Update your display name</p>
                                     </div>
                                 </button>
                                 <button class="security-btn" onclick="showChangePassword()">
-                                    <div class="security-icon">🔑</div>
+                                    <div class="security-icon"><span class="material-symbols-rounded">vpn_key</span></div>
                                     <div class="security-text">
                                         <h4>Change Password</h4>
                                         <p>Update your account password</p>
                                     </div>
                                 </button>
                                 <button class="security-btn" onclick="showSecurityQuestion()">
-                                    <div class="security-icon">❓</div>
+                                    <div class="security-icon"><span class="material-symbols-rounded">help</span></div>
                                     <div class="security-text">
                                         <h4>Security Question</h4>
                                         <p>Set up account recovery</p>
