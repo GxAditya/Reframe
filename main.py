@@ -4,18 +4,22 @@ from fastapi.responses import HTMLResponse, JSONResponse
 import uvicorn
 import io
 import base64
+import os
 from PIL import Image
 from transform import create_artistic_effect, create_all_variants
 
+# Get the absolute path to the directory containing main.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 app = FastAPI(title="Reframe API", description="Image Transformation Tool")
 
-# Mount static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Mount static files with absolute path
+app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 
 # Routes
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
-    with open("static/index.html", "r", encoding="utf-8") as f:
+    with open(os.path.join(BASE_DIR, "static/index.html"), "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read(), status_code=200)
 
 @app.post("/api/transform")
@@ -69,4 +73,5 @@ async def transform_image(
         raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
