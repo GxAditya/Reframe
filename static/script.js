@@ -91,6 +91,24 @@ function handlePopState() {
     }
 }
 
+// Mobile navigation toggle
+function toggleMobileNav() {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav) {
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+}
+
+// Close mobile nav when clicking on a link
+function closeMobileNav() {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav) {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
 // Toast notifications
 function showToast(message, type = 'info') {
     const toast = document.createElement('div');

@@ -29,8 +29,26 @@
                     <div class="nav-actions">
                         <button class="btn btn-primary" onclick="showMainApp()">Begin</button>
                     </div>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileNav()" aria-label="Open menu">
+                        <span class="material-symbols-rounded">menu</span>
+                    </button>
                 </div>
             </nav>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-nav" class="mobile-nav">
+                <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+                <div class="mobile-nav-links">
+                    <a href="#features" class="mobile-nav-link" onclick="toggleMobileNav()">Capabilities</a>
+                    <a href="#how-it-works" class="mobile-nav-link" onclick="toggleMobileNav()">Experience</a>
+                    <a href="#showcase" class="mobile-nav-link" onclick="toggleMobileNav()">Gallery</a>
+                </div>
+                <div class="mobile-nav-actions">
+                    <button class="btn btn-primary btn-full" onclick="showMainApp(); toggleMobileNav();">Begin Creating</button>
+                </div>
+            </div>
 
             <!-- Hero Section -->
             <section class="hero-section">
