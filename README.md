@@ -1,180 +1,143 @@
-# Reframe - AI-Powered Image Transformation Tool
+# Reframe
 
-Transform your photos into amazing cartoons using cutting-edge AI technology with OpenCV fallback! Reframe features a beautiful modern web interface with pink gradient themes and uses advanced machine learning models for the best results, but automatically falls back to robust OpenCV techniques when AI is unavailable.
+<p align="center">
+  <img src="static/Reframe.png" alt="Reframe" width="120" height="120">
+</p>
 
-## 🚀 Features
+<p align="center">
+  <strong>Image Transformation Tool</strong>
+</p>
 
-- **Modern Web Interface**: Beautiful HTML/CSS frontend with pink gradient themes and soft glow effects
-- **FastAPI Backend**: High-performance REST API with JWT authentication
-- **Hybrid Processing**: AI-powered transformation with OpenCV fallback for reliability
-- **Multiple Styles**: Classic Cartoon, Pencil Sketch, Watercolor Painting, and Oil Painting
-- **Style Variants**: Multiple variations for each artistic style (OpenCV mode)
-- **Automatic Fallback**: Seamlessly switches to OpenCV when AI is unavailable
-- **User Authentication**: Secure JWT-based login and registration system
+<p align="center">
+  <a href="https://python.org">
+    <img src="https://img.shields.io/badge/Python-3.7%2B-blue" alt="Python">
+  </a>
+  <a href="https://fastapi.tiangolo.com">
+    <img src="https://img.shields.io/badge/FastAPI-Framework-green" alt="FastAPI">
+  </a>
+  <a href="https://opencv.org">
+    <img src="https://img.shields.io/badge/OpenCV-Processing-red" alt="OpenCV">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License: MIT">
+  </a>
+</p>
+
+Transform your photos into stunning artistic styles using OpenCV-powered image processing.
+
+## Features
+
+- **Modern Web Interface**: Beautiful editorial-style frontend with refined aesthetics
+- **FastAPI Backend**: High-performance REST API
+- **Pure OpenCV Processing**: Reliable, fast image transformations
+- **Multiple Styles**: Cartoon, Pencil Sketch, Watercolor, and Oil Painting
+- **Style Variants**: Multiple variations for each artistic style
 - **Responsive Design**: Works perfectly on desktop and mobile devices
-- **Download Support**: Save your transformed images in high quality PNG format
+- **Download Support**: Save transformed images in high-quality PNG format
 
-## 🎨 Transformation Styles
+## Transformation Styles
 
-1. **Classic Cartoon**: Traditional animated style with bold colors, clean lines, and simplified features
+1. **Cartoon**: Traditional animated style with bold colors, clean lines, and simplified features
 2. **Pencil Sketch**: Hand-drawn appearance with detailed line work, crosshatching, and realistic shading
-3. **Watercolor Painting**: Soft, flowing colors with gentle brush strokes and dreamy atmospheric effects
+3. **Watercolor**: Soft, flowing colors with gentle brush strokes and dreamy atmospheric effects
 4. **Oil Painting**: Rich, textured brush strokes with vibrant colors and classic painting techniques
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 
-To use the AI-powered image transformation features, you need to set up a Hugging Face token.
+- Python 3.7+
 
 ### Setup Steps
 
 1. **Clone the repository**:
-```bash
-git clone <repository-url>
-cd toonify
-```
+   ```bash
+   git clone <repository-url>
+   cd reframe
+   ```
 
 2. **Install dependencies**:
-```bash
-pip install -r requirements.txt
-```
-
-3. **Get a Hugging Face Token**:
-   - Go to [Hugging Face](https://huggingface.co/)
-   - Create a free account or log in
-   - Navigate to [Settings > Access Tokens](https://huggingface.co/settings/tokens)
-   - Click "New token"
-   - Give it a name (e.g., "Reframe App")
-   - Select "Read" permissions
-   - Click "Generate a token"
-   - Copy the token (it starts with `hf_`)
-
-4. **Create Environment File**:
-   - In your project directory, create a file named `.env`
-   - Add your token to the file:
-   ```
-   HF_TOKEN=hf_your_actual_token_here
-   ```
-   **Note**: Replace `hf_your_actual_token_here` with the actual token you copied from Hugging Face.
-
-   #### Alternative: Set Environment Variable Manually
-
-   If you prefer not to use a `.env` file, you can set the environment variable directly:
-
-   **Windows (Command Prompt)**
-   ```cmd
-   set HF_TOKEN=your_token_here
-   ```
-
-   **Windows (PowerShell)**
-   ```powershell
-   $env:HF_TOKEN="your_token_here"
-   ```
-
-   **Linux/Mac**
    ```bash
-   export HF_TOKEN=your_token_here
+   pip install -r requirements.txt
    ```
 
-5. **Run the application**:
-```bash
-python run.py
-```
+3. **Run the application**:
+   ```bash
+   python main.py
+   ```
 
-Or using uvicorn directly:
-```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
+   Or using uvicorn directly:
+   ```bash
+   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+   ```
 
-6. **Open your browser and navigate to**:
-```
-http://localhost:8000
-```
+4. **Open your browser and navigate to**:
+   ```
+   http://localhost:8000
+   ```
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.7+
-- Hugging Face account and API token
-- Internet connection for AI processing
 - See `requirements.txt` for Python dependencies
 
-## 🔧 Configuration
-
-The app requires a Hugging Face API token to access the AI models. Follow the detailed setup steps in the Installation section above to obtain and configure your token.
-
-## 🎯 How It Works
+## How It Works
 
 1. **Upload**: Choose an image file (PNG, JPG, JPEG)
-2. **Select Style**: Pick from 4 AI-powered transformation styles
-3. **Generate**: Click "Apply Transformation" to process with AI
+2. **Select Style**: Pick from 4 transformation styles
+3. **Generate**: Click "Apply" to process with OpenCV
 4. **Download**: Save your transformed image
 
-## 🤖 Technology Stack
+## Technology Stack
 
-This application uses:
-- **FastAPI**: High-performance Python web framework for the REST API
-- **HTML/CSS/JavaScript**: Modern responsive frontend with pink gradient themes
-- **Hugging Face Inference API**: For cloud-based AI processing (primary)
-- **OpenCV**: For reliable image processing fallback with multiple style variants
-- **Qwen/Qwen-Image-Edit Model**: Advanced image-to-image transformation
-- **JWT Authentication**: Secure token-based user authentication
-- **PIL/Pillow**: Image processing and handling
-- **SQLite**: Lightweight database for user management
+- **FastAPI**: High-performance Python web framework
+- **OpenCV**: Computer vision and image processing
+- **PIL/Pillow**: Image handling and manipulation
+- **NumPy**: Numerical computing
+- **HTML/CSS/JavaScript**: Modern responsive frontend
 
-## 🔄 Fallback System
+## Gallery
 
-The app intelligently handles processing failures:
-1. **Primary**: Attempts AI transformation using Hugging Face models
-2. **Fallback**: Automatically uses OpenCV techniques if AI fails
-3. **Reliability**: Ensures you always get a cartoon transformation
+Transformation results showcasing the artistic styles available in Reframe:
 
-## 📁 Project Structure
+| Style | Result |
+|-------|--------|
+| Oil Painting | ![Oil Painting](static/reframe_oilpaint.png) |
+| Pencil Sketch | ![Pencil Sketch](static/reframe_sketch.png) |
+| Watercolor | ![Watercolor](static/reframe_watercolor.png) |
+
+## Project Structure
 
 ```
 reframe/
-├── main.py                 # FastAPI application and API routes
-├── run.py                  # Application runner script
-├── auth.py                 # User authentication system (legacy)
-├── toonify.py              # AI image transformation logic
-├── opencv_fallback.py      # OpenCV image processing with variants
+├── main.py              # FastAPI application and API routes
+├── transform.py         # OpenCV image transformation logic
 ├── static/
-│   ├── index.html          # Main HTML frontend
-│   ├── style.css           # CSS with pink gradient themes
-│   └── script.js           # JavaScript frontend logic
-├── requirements.txt        # Python dependencies
-├── setup_guide.md          # Setup instructions
-└── README.md              # This file
+│   ├── index.html      # Main HTML frontend
+│   ├── style.css       # CSS styling
+│   ├── script.js       # JavaScript frontend logic
+│   ├── Reframe.png     # Application icon
+│   ├── reframe_*.png   # Gallery images
+│   └── *.png           # Hero/floating card images
+├── requirements.txt     # Python dependencies
+└── README.md          # This file
 ```
 
-## 🔒 Security
+## Performance
 
-- Secure password hashing with bcrypt
-- Session-based authentication
-- Images processed securely via Hugging Face API
-- No permanent storage of uploaded images
-
-## 🚀 Performance
-
-- AI processing typically takes 5-15 seconds per image
-- Larger images may take longer to process
-- Results depend on internet connection speed
+- Processing takes only seconds per image
 - High-quality output suitable for printing or sharing
+- Optimized for both speed and quality
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
-- **"HF_TOKEN environment variable is required"**: Make sure you've set the HF_TOKEN environment variable as described in the Installation section
-- **Connection errors**: Check your internet connection
-- **Processing failures**: Try with a smaller image or different style
+- **Processing errors**: Try with a smaller image or different style
+- **Display issues**: Ensure you're using a modern browser with JavaScript enabled
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome. Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
-This project is open source and available under the MIT License.
-
-## 🤖 Model Information
-
-This app uses the `Qwen/Qwen-Image-Edit` model via Hugging Face's Inference API for high-quality image-to-image transformations.
+This project is available under the [MIT License](https://opensource.org/licenses/MIT).
