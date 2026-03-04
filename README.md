@@ -1,4 +1,4 @@
-# Reframe
+<h1 align="center">Reframe</h1>
 
 <p align="center">
   <img src="static/Reframe.png" alt="Reframe" width="120" height="120">
