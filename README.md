@@ -1,7 +1,7 @@
 <h1 align="center">Reframe</h1>
 
 <p align="center">
-  <img src="static/Reframe.png" alt="Reframe" width="120" height="120">
+  <img src="static/Reframe.webp" alt="Reframe" width="120" height="120">
 </p>
 
 <p align="center">
@@ -102,9 +102,9 @@ Transformation results showcasing the artistic styles available in Reframe:
 
 | Style | Result |
 |-------|--------|
-| Oil Painting | ![Oil Painting](static/reframe_oilpaint.png) |
-| Pencil Sketch | ![Pencil Sketch](static/reframe_sketch.png) |
-| Watercolor | ![Watercolor](static/reframe_watercolor.png) |
+| Oil Painting | ![Oil Painting](static/reframe_oilpaint.webp) |
+| Pencil Sketch | ![Pencil Sketch](static/reframe_sketch.webp) |
+| Watercolor | ![Watercolor](static/reframe_watercolor.webp) |
 
 ## Project Structure
 
@@ -116,9 +116,9 @@ reframe/
 │   ├── index.html      # Main HTML frontend
 │   ├── style.css       # CSS styling
 │   ├── script.js       # JavaScript frontend logic
-│   ├── Reframe.png     # Application icon
-│   ├── reframe_*.png   # Gallery images
-│   └── *.png           # Hero/floating card images
+│   ├── Reframe.webp     # Application icon
+│   ├── reframe_*.webp   # Gallery images
+│   └── *.webp           # Hero/floating card images
 ├── requirements.txt     # Python dependencies
 └── README.md          # This file
 ```
