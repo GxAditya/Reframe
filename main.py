@@ -52,7 +52,7 @@ async def transform_image(
         # Generate variants if supported
         variants = {}
         if style in ["sketch", "oilpaint", "cartoon", "watercolor"]:
-            variant_images = create_all_variants(pil_image, style)
+            variant_images = create_all_variants(result_image, style)
             for variant_name, variant_img in variant_images.items():
                 variant_buffer = io.BytesIO()
                 variant_img.save(variant_buffer, format='PNG')

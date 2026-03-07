@@ -238,10 +238,13 @@
                             <div class="panel-block">
                                 <div class="panel-heading">
                                     <h3>Upload</h3>
-                                    <p>Drop an image and pick a look.</p>
+                                    <p>Drop an image or click to browse.</p>
                                 </div>
-                                <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)" style="display: none;">
-                                <button class="btn btn-secondary browse-btn" onclick="document.getElementById('file-input').click()">Browse</button>
+                                <div class="upload-zone" id="upload-zone">
+                                    <input type="file" id="file-input" accept="image/*" onchange="handleFileSelect(event)">
+                                    <span class="material-symbols-rounded">cloud_upload</span>
+                                    <span class="upload-text">Drop image here</span>
+                                </div>
                                 <span id="file-name" class="file-name"></span>
                             </div>
 
@@ -251,29 +254,26 @@
                                     <p>Choose a direction.</p>
                                 </div>
                                 <div class="style-options">
-                                    <label class="style-option">
+                                    <label class="style-option style-visual">
                                         <input type="radio" name="style" value="cartoon" checked>
+                                        <div class="style-thumb"><img src="/static/cartoon.webp" alt="Cartoon"></div>
                                         <span>Cartoon</span>
                                     </label>
-                                    <label class="style-option">
+                                    <label class="style-option style-visual">
                                         <input type="radio" name="style" value="sketch">
+                                        <div class="style-thumb"><img src="/static/pencil-sketch.webp" alt="Sketch"></div>
                                         <span>Sketch</span>
                                     </label>
-                                    <label class="style-option">
+                                    <label class="style-option style-visual">
                                         <input type="radio" name="style" value="watercolor">
+                                        <div class="style-thumb"><img src="/static/water-color.webp" alt="Watercolor"></div>
                                         <span>Watercolor</span>
                                     </label>
-                                    <label class="style-option">
+                                    <label class="style-option style-visual">
                                         <input type="radio" name="style" value="oilpaint">
+                                        <div class="style-thumb"><img src="/static/oil-painting.webp" alt="Oil Paint"></div>
                                         <span>Oil Paint</span>
                                     </label>
-                                </div>
-                            </div>
-
-                            <div id="parameters-panel" class="panel-block" style="display: none;">
-                                <div class="panel-heading">
-                                    <h3>Parameters</h3>
-                                    <p>Fine-tune the transformation.</p>
                                 </div>
                             </div>
 

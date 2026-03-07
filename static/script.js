@@ -1,3 +1,52 @@
+// ====== DRAG AND DROP UPLOAD ======
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadZone = document.getElementById('upload-zone');
+    
+    if (uploadZone) {
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        // Highlight upload zone
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, function() {
+                this.classList.add('drag-over');
+            }, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, function() {
+                this.classList.remove('drag-over');
+            }, false);
+        });
+        
+        // Handle dropped files
+        uploadZone.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                handleFileSelect({ target: { files: files } });
+            }
+        }, false);
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }
+    
+    // Style option visual feedback
+    const styleOptions = document.querySelectorAll('.style-option');
+    styleOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            styleOptions.forEach(o => o.style.borderColor = '');
+            this.style.borderColor = 'var(--bronze)';
+        });
+    });
+});
+
 // Global state
 let currentImageData = null;
 
@@ -275,8 +324,8 @@ async function transformImage() {
             if (filterParameters) filterParameters.style.display = 'block';
             if (parametersPanel) parametersPanel.style.display = 'block';
 
-            const processingMethod = 'OpenCV';
-            showToast(`🎨 ${style.charAt(0).toUpperCase() + style.slice(1)} transformation completed with ${processingMethod}!`, 'success');
+            const processingMethod = 'Reframe';
+            showToast(`🎨 ${style.charAt(0).toUpperCase() + style.slice(1)} transformation completed!`, 'success');
         }
 
     } catch (error) {

@@ -1057,24 +1057,44 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg-elevated);
     border: var(--border-light);
     border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.editor-display .empty-state::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(196, 130, 74, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(160, 82, 45, 0.03) 0%, transparent 50%);
 }
 
 .editor-display .empty-state .material-symbols-rounded {
     font-size: 64px;
-    color: var(--text-secondary);
+    color: var(--bronze);
     margin-bottom: var(--space-md);
+    opacity: 0.6;
 }
 
 #image-preview {
     width: 100%;
+    position: relative;
 }
 
 #image-preview img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 8px;
     display: block;
     margin: 0 auto;
+    box-shadow: var(--shadow-md);
+}
+
+#image-preview:has(img) {
+    background: var(--bg-secondary);
+    padding: var(--space-md);
+    border-radius: 8px;
 }
 
 .result-actions {
@@ -1083,6 +1103,14 @@ h1, h2, h3, h4, h5, h6 {
     flex-wrap: wrap;
     justify-content: center;
     padding: var(--space-lg) 0;
+}
+
+.result-actions .btn {
+    min-width: 160px;
+}
+
+.result-actions .btn .material-symbols-rounded {
+    font-size: 20px;
 }
 
 .variants-section {
@@ -1094,25 +1122,39 @@ h1, h2, h3, h4, h5, h6 {
 .variants-section h3 {
     margin-bottom: var(--space-lg);
     text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-primary);
 }
 
 .variants-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: var(--space-lg);
 }
 
 .variant-item {
     background: var(--bg-secondary);
     border: var(--border-light);
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.variant-item:hover {
+    border-color: var(--bronze);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
 .variant-item img {
     width: 100%;
     height: auto;
     cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.variant-item:hover img {
+    transform: scale(1.02);
 }
 
 .variant-header {
@@ -1214,6 +1256,50 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* Upload Zone */
+.upload-zone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    border: 2px dashed var(--border-medium);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    background: var(--bg-elevated);
+}
+
+.upload-zone:hover {
+    border-color: var(--bronze);
+    background: rgba(196, 130, 74, 0.05);
+}
+
+.upload-zone.drag-over {
+    border-color: var(--bronze);
+    background: rgba(196, 130, 74, 0.1);
+    border-style: solid;
+}
+
+.upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-zone .material-symbols-rounded {
+    font-size: 36px;
+    color: var(--bronze);
+}
+
+.upload-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
 .file-name {
     display: block;
     font-size: 0.75rem;
@@ -1223,9 +1309,66 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .style-options {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-sm);
+}
+
+.style-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-elevated);
+    border: var(--border-light);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.style-option:hover {
+    border-color: var(--border-subtle);
+    background: var(--bg-card);
+}
+
+.style-option input[type="radio"] {
+    accent-color: var(--bronze);
+}
+
+.style-option span {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
+/* Visual style option with thumbnail */
+.style-visual {
+    flex-direction: column;
+    padding: 6px;
+    text-align: center;
+}
+
+.style-visual .style-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.style-visual .style-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.style-visual:hover .style-thumb img {
+    transform: scale(1.05);
+}
+
+.style-visual span {
+    font-size: 0.7rem;
+    font-weight: 500;
 }
 
 .style-option {
@@ -1591,6 +1734,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .editor-sidebar {
         order: 2;
+        padding: var(--space-md);
     }
     
     .editor-display {
@@ -1616,6 +1760,10 @@ h1, h2, h3, h4, h5, h6 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-md);
+    }
+    
+    .style-visual .style-thumb {
+        aspect-ratio: 1;
     }
 }
 
@@ -1646,6 +1794,54 @@ h1, h2, h3, h4, h5, h6 {
     
     .feature-card-new {
         padding: var(--space-lg);
+    }
+    
+    /* Mobile editor fixes */
+    .editor-sidebar {
+        padding: var(--space-sm);
+    }
+    
+    .panel-block {
+        padding: var(--space-sm);
+    }
+    
+    .panel-heading h3 {
+        font-size: 0.7rem;
+    }
+    
+    .panel-heading p {
+        font-size: 0.7rem;
+    }
+    
+    .upload-zone {
+        padding: var(--space-md);
+    }
+    
+    .upload-zone .material-symbols-rounded {
+        font-size: 28px;
+    }
+    
+    .style-visual .style-thumb {
+        aspect-ratio: 1;
+    }
+    
+    .style-visual span {
+        font-size: 0.65rem;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .result-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .variants-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
     
     .steps-container {
