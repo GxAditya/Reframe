@@ -45,10 +45,38 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.borderColor = 'var(--bronze)';
         });
     });
+
+    setupFilterRegeneration();
 });
 
 // Global state
 let currentImageData = null;
+
+function getFilterValues() {
+    const intensity = document.getElementById('intensity');
+    const blur = document.getElementById('blur');
+    const edge = document.getElementById('edge');
+
+    return {
+        intensity: intensity ? Number(intensity.value) / 50 : 1.0,
+        blur: blur ? Number(blur.value) : 7,
+        edge_threshold: edge ? Number(edge.value) * 4 + 60 : 100
+    };
+}
+
+function setupFilterRegeneration() {
+    ['intensity', 'blur', 'edge'].forEach(id => {
+        const slider = document.getElementById(id);
+        if (!slider) return;
+
+        slider.addEventListener('change', () => {
+            const resultImage = document.getElementById('result-image');
+            if (currentImageData && resultImage && resultImage.style.display !== 'none' && resultImage.src) {
+                transformImage();
+            }
+        });
+    });
+}
 
 // ====== LUXURY INTERACTIONS ======
 
@@ -265,6 +293,7 @@ async function transformImage() {
     }
 
     const style = getSelectedStyle();
+    const filters = getFilterValues();
 
     // Show loading state
     const transformBtn = document.querySelector('.transform-btn');
@@ -285,6 +314,9 @@ async function transformImage() {
         const formData = new FormData();
         formData.append('file', currentImageData);
         formData.append('style', style);
+        formData.append('intensity', filters.intensity);
+        formData.append('blur', filters.blur);
+        formData.append('edge_threshold', filters.edge_threshold);
 
         const data = await apiCall('/transform', {
             method: 'POST',
